@@ -40,11 +40,11 @@ def parse_habr_articles_url(habr_page_articles_data: str) -> list:
             f"[ERROR]: Failed to parse data from the habr page articles. {e}")
 
 
-async def fetch_five_by_five_articles_data(urls: list) -> list[str]:
+async def fetch_five_by_five_articles_data(urls: list, headers: dict) -> list[str]:
     """
     Asynchronously fetches HTML content from a list of article URLs.
     """
-    async with httpx.AsyncClient() as session:
+    async with httpx.AsyncClient(headers=headers) as session:
         articles_data = []
         total_urls = len(urls)
 

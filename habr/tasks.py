@@ -26,7 +26,7 @@ def run_habr_parser() -> None:
     habr_articles_urls = parse_habr_articles_url(habr_page_articles_data)
     loop = asyncio.get_event_loop()
     articles_data = loop.run_until_complete(
-        fetch_five_by_five_articles_data(habr_articles_urls)
+        fetch_five_by_five_articles_data(urls=habr_articles_urls, headers=headers)
     )
     articles = parse_habr_articles_data(articles_data=articles_data)
     analyzed_articles = analyze_articles(articles)
